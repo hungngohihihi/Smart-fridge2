@@ -1,0 +1,215 @@
+@import "./assets/variables";
+
+.navigation-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  .navigation-background-top {
+    width: 100%;
+    height: 1em;
+    background-color: $primary;
+    transition: $ease-all;
+    @media (max-width: $extralarge) {
+      height: 2em;
+    }
+    @media (max-width: $large) {
+      height: 3em;
+    }
+    @media (max-width: $medium) {
+      height: 4em;
+    }
+  }
+  .navigation-curve {
+    fill: #7453ff;
+  }
+}
+
+nav.desktop {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    li {
+      margin: 0 0.75em;
+      @media (max-width: $large) {
+        margin: 0;
+      }
+      display: inline-block;
+      cursor: pointer;
+      font: 1.5em $neutra-bold;
+      transition: $bezier;
+      position: relative;
+      &:hover {
+        transform: scale(1.15);
+      }
+      &:first-child::after {
+        content: "";
+      }
+      a {
+        &::selection {
+          background-color: $secondary;
+          color: $primary;
+        }
+        display: block;
+        letter-spacing: 0.75px;
+        padding: 0.75em 0.75em 0.75em 2.5em;
+        text-decoration: none;
+        color: $secondary;
+        font-family: $neutra-bold;
+        transition: $bezier;
+        position: relative;
+        @include bar(0.4em, 90%, true);
+        div {
+          svg {
+            height: 1em;
+            position: absolute;
+            left: 0.75em;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+        div.recipe-icon,
+        div.locations-icon,
+        div.stocks-icon {
+          svg {
+            height: 1.25em;
+          }
+        }
+      }
+      a.active {
+        text-decoration: none;
+        color: $secondary;
+        font-family: $neutra-bold;
+        transition: $bezier;
+        position: relative;
+        @include bar(0.4em, 90%, true);
+      }
+    }
+  }
+}
+
+nav.mobile {
+  z-index: 100;
+  .circle {
+    width: 8.75em;
+    height: 8.75em;
+    position: fixed;
+    top: -70px;
+    right: -70px;
+    background-color: $primary;
+    border-radius: 6em;
+    z-index: 100;
+    transition: $ease-all;
+    cursor: pointer;
+    .hamburger {
+      svg {
+        bottom: 19%;
+        position: absolute;
+        left: 11.5%;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+nav.mobile-full {
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  display: block;
+  left: 0;
+  transition: 200ms ease-in-out all;
+  div.navigation-content {
+    position: relative;
+    height: 100%;
+    .background-text {
+      font-family: $neutra-bold-italic;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 37em;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -29vw;
+      opacity: 0.07;
+      white-space: nowrap;
+      line-height: 0.8;
+      z-index: 0;
+      transform: rotate(-90deg);
+      z-index: 101;
+      pointer-events: none;
+    }
+    ul {
+      margin: 0;
+      padding: 7em 2em;
+      width: 100%;
+      height: 100%;
+      list-style: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      li {
+        margin: 0;
+        display: block;
+        cursor: pointer;
+        font-family: $neutra-bold;
+        font-size: 2em;
+        transition: $bezier;
+        position: relative;
+        &:hover {
+          transform: scale(1.15);
+        }
+        &:first-child::after {
+          content: "";
+        }
+        a {
+          display: inline-block;
+          letter-spacing: 0.75px;
+          padding: 0.75em 0.75em 0.75em 2.25em;
+          text-decoration: none;
+          color: $secondary;
+          font-family: $neutra-bold;
+          transition: $bezier;
+          position: relative;
+          div {
+            svg {
+              height: 1em;
+              position: absolute;
+              left: 0.5em;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+          div.recipe-icon,
+          div.locations-icon,
+          div.stocks-icon {
+            svg {
+              height: 1.25em;
+            }
+          }
+        }
+        a.active {
+          text-decoration: none;
+          color: $secondary;
+          font-family: $neutra-bold;
+          transition: $bezier;
+          position: relative;
+        }
+        .close-menu {
+          width: 2.5em;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

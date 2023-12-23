@@ -1,0 +1,20 @@
+@import "../../variables";
+.eye-icon {
+  svg {
+    line {
+      transition: $ease-all-short;
+    }
+  }
+  .cls-1 {
+    fill: #b7abff;
+  }
+  .cls-2,
+  .cls-3 {
+    fill: #7453ff;
+  }
+  .cls-3 {
+    stroke: #7453ff;
+    stroke-miterlimit: 10;
+    stroke-width: 3em;
+  }
+}

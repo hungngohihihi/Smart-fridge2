@@ -1,0 +1,106 @@
+@import "./assets/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+@mixin font($name, $src) {
+  @font-face {
+    font-family: $name;
+    src: url($src);
+    font-display: swap;
+  }
+}
+
+@include font(NeutraBoldItalic, "./assets/fonts/NeutraText-BoldItalic.otf");
+@include font(NeutraBold, "./assets/fonts/NeutraText-Bold.otf");
+@include font(NeutraBook, "./assets/fonts/NeutraText-Book.otf");
+
+body {
+  margin: 0;
+  font-family: $neutra;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $primary;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+.loading.page {
+  height: 100vh;
+  overflow: hidden;
+  section.loading {
+    width: 100%;
+    height: 100%;
+    .background-text {
+      cursor: default;
+      font-family: "NeutraBoldItalic", sans-serif;
+      color: #f8f7ff;
+      font-size: 20em;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      line-height: 0.8;
+      z-index: -1;
+      -webkit-user-select: none;
+      user-select: none;
+      transition: $ease-all;
+      @media (min-width: $large) {
+        font-size: 30em;
+      }
+      @media (max-width: $medium) {
+        font-size: 25em;
+        left: 0;
+        right: 0;
+        bottom: 5vh;
+        top: unset;
+        transform: rotate(-90deg);
+      }
+    }
+    .loading-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        @include headerOne;
+      }
+    }
+  }
+}
+
+::selection {
+  background-color: $primary;
+  color: $secondary;
+}
+
+.page {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.fade {
+  &-appear,
+  &-enter {
+    opacity: 0;
+    z-index: 1;
+  }
+  &-appear-active,
+  &-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms linear 150ms;
+  }
+  &-exit {
+    opacity: 1;
+  }
+  &-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9a727097.css",
+    "main.js": "/static/js/main.6992b7e9.js",
+    "static/media/NeutraText-Book.otf": "/static/media/NeutraText-Book.794f7defd77f3e1c0db9.otf",
+    "static/media/NeutraText-BoldItalic.otf": "/static/media/NeutraText-BoldItalic.a1243eed8a8e343c6982.otf",
+    "static/media/NeutraText-Bold.otf": "/static/media/NeutraText-Bold.f2c4fd968da4f4710241.otf",
+    "index.html": "/index.html",
+    "main.9a727097.css.map": "/static/css/main.9a727097.css.map",
+    "main.6992b7e9.js.map": "/static/js/main.6992b7e9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a727097.css",
+    "static/js/main.6992b7e9.js"
+  ]
+}
