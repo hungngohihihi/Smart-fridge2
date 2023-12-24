@@ -15,11 +15,13 @@ import Locations from "./pages/Locations/Locations";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Forum from "./pages/Forum/Forum";
 import Recipes from "./pages/Recipes/Recipes";
 //Icons
 import Hamburger from "./assets/images/Hamburger";
 import CloseMenu from "./assets/images/CloseMenu";
 import DashboardIcon from "./assets/images/Dashboard";
+import ForumIcon from "./assets/images/Forum";
 import LoginIcon from "./assets/images/LogIn";
 import SignupIcon from "./assets/images/Signup";
 import HomeIcon from "./assets/images/Home";
@@ -173,6 +175,12 @@ const App = () => {
                   Dashboard
                 </NavLink>
               </li>
+              <li>
+                <NavLink activeClassName="active" to="/Forum">
+                  <ForumIcon />
+                  Forum
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>
@@ -287,6 +295,31 @@ const App = () => {
                     Dashboard
                   </NavLink>
                 </li>
+
+                {!isAuthenticated ? (
+                  <li>
+                    <NavLink
+                      activeClassName="active"
+                      to="/login"
+                      onClick={closeNavigation}
+                    >
+                      <LoginIcon />
+                      Login
+                    </NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink
+                      activeClassName="active"
+                      to="/forum"
+                      onClick={closeNavigation}
+                    >
+                      <ForumIcon />
+                      Forum
+                    </NavLink>
+                  </li>
+                )}
+
               </ul>
             </div>
           </nav>
@@ -357,6 +390,15 @@ const App = () => {
                     <LoadingPage />
                   ) : isAuthenticated ? (
                     <Dashboard email={email} username={username} />
+                  ) : (
+                    <Redirect to="/login" />
+                  )}
+                </Route>
+                <Route path="/forum">
+                  {isLoading ? (
+                    <LoadingPage />
+                  ) : isAuthenticated ? (
+                    <Forum email={email} username={username} />
                   ) : (
                     <Redirect to="/login" />
                   )}

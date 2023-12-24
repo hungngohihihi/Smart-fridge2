@@ -5,7 +5,6 @@ import SearchForum from "../../components/Forum/SearchForum";
 import pasta from "./pasta.jpg";
 import pho from "./pho.jpg";
 import "./forum.scss";
-import axios from "axios";
 
 const Forum = ({ isMobile, username }) => {
   document.title = "FridgeMan - Forum";
@@ -16,19 +15,15 @@ const Forum = ({ isMobile, username }) => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
 
-  // const getUsers = async () => {
-  //   await fetch("/api/users")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setUsers(data);
-  //     });
-  // };
   const getUsers = async () => {
-    const res = await axios.get("/api/users");
-    setUsers(res.data);
-  }
+    await fetch("/api/users")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setUsers(data);
+      });
+  };
 
   useEffect(() => {
     getUsers();

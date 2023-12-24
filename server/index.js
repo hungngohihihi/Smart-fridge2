@@ -15,6 +15,7 @@ const stocks = require("./routes/stocks");
 const locations = require("./routes/locations");
 const auth = require("./routes/auth");
 const index = require("./routes/index");
+const users = require("./routes/users");
 
 //Middleware
 app.use(cors());
@@ -43,6 +44,7 @@ app.use(
 app.use("/api/stocks", stocks);
 app.use("/api/locations", locations);
 app.use("/api/auth", auth);
+app.use("/api/users", users);
 app.use("/", index);
 
 //App Listener
