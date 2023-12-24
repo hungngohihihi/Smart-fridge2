@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ListUsers from "../../components/Forum/ListUser";
 // import AddStock from "../../components/Stock/AddStock";
 import SearchForum from "../../components/Forum/SearchForum";
+import AddPost from "../../components/Forum/AddPost";
 import pasta from "./pasta.jpg";
 import pho from "./pho.jpg";
 import "./forum.scss";
@@ -62,7 +63,12 @@ const Forum = ({ isMobile, username }) => {
           setAddVisibility={setAddVisibility}
           addVisible={addVisible}
         /> */}
-
+        <AddPost
+          // locationList={locationList}
+          // getPosts={getPost}
+          setAddVisibility={setAddVisibility}
+          addVisible={addVisible}
+        />
         <SearchForum
           // name={name}
           // location={location}

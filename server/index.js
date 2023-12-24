@@ -1,5 +1,5 @@
 //Variables
-const port = 5560;
+const port = 5561;
 const cookieExpire = 1000 * 60 * 60 * 2;
 
 //Requirements
@@ -16,7 +16,7 @@ const locations = require("./routes/locations");
 const auth = require("./routes/auth");
 const index = require("./routes/index");
 const users = require("./routes/users");
-
+const post = require("./routes/post");
 //Middleware
 app.use(cors());
 app.use(
@@ -45,6 +45,7 @@ app.use("/api/stocks", stocks);
 app.use("/api/locations", locations);
 app.use("/api/auth", auth);
 app.use("/api/users", users);
+app.use("/api/post", post);
 app.use("/", index);
 
 //App Listener
