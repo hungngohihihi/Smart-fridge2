@@ -15,6 +15,7 @@ const Stocks = ({ isMobile, locationList, username }) => {
   const [location, setLocation] = useState("all-locations");
 
   const getStocks = async () => {
+    
     await fetch("/api/stocks")
       .then((response) => {
         return response.json();
@@ -22,6 +23,7 @@ const Stocks = ({ isMobile, locationList, username }) => {
       .then((data) => {
         setStocks(data);
       });
+      
   };
 
   useEffect(() => {

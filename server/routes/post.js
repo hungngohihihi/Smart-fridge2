@@ -10,9 +10,7 @@ const pool = require("../db");
  ***LOCATION ROUTES***
  *********************/
 
-//Add a stock
-
-//Add a stock
+//Add a post
 router.post("/", async (req, res) => {
     const { title,content } = req.body;
     const currentTimeUTC = new Date().toUTCString();
@@ -24,5 +22,24 @@ router.post("/", async (req, res) => {
     );
   });
   
+
+
+// router.get("/", async (req, res) => {
+//     res.send(
+//       await pool.query(
+//         "SELECT email FROM users;",[]
+//       ).rows
+//     );
+//   });
+
+router.get("/", async (req, res) => {
+  res.send(
+    (
+      await pool.query("SELECT * FROM post;", [
+        // req.session.email,
+      ])
+    ).rows
+  );
+});
 
 module.exports = router;
