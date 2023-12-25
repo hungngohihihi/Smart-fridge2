@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ListStocks from "../../components/Stock/ListStock";
 import AddStock from "../../components/Stock/AddStock";
 import SearchStock from "../../components/Stock/SearchStock";
+import Notification from "../../components/Noti/Notification";
 import "./stocks.scss";
 
 const Stocks = ({ isMobile, locationList, username }) => {
@@ -14,6 +15,14 @@ const Stocks = ({ isMobile, locationList, username }) => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("all-locations");
 
+  const [listExpired, setList] = useState([]);
+
+  const getDifDays = (expiration) => {
+    let today = new Date();
+    let expDate = new Date(expiration);
+    return Math.round((expDate - today) / (1000 * 3600 * 24) + 1);
+  };
+
   const getStocks = async () => {
     await fetch("/api/stocks")
       .then((response) => {
@@ -21,6 +30,16 @@ const Stocks = ({ isMobile, locationList, username }) => {
       })
       .then((data) => {
         setStocks(data);
+
+        const listExpiration = [];
+
+        data.forEach(item => {
+          if (getDifDays(item.expiration) < 0) {
+            listExpiration.push(`"${item.name}" has expired!`);
+          }
+        });
+
+        setList(listExpiration);
       });
   };
 
@@ -73,6 +92,9 @@ const Stocks = ({ isMobile, locationList, username }) => {
           isMobile={isMobile}
         />
       </div>
+      <Notification
+        listMessage={listExpired}
+      />
     </div>
   );
 };
