@@ -34,7 +34,7 @@ const AddStock = ({
 
   useEffect(() => {
     setLocation(locationList[0] ? locationList[0].name : "");
-  }, [locationList]);
+  }, []);
 
   return (
     <div
@@ -65,6 +65,7 @@ const AddStock = ({
               required
             />
           </div>
+
           <div className="input">
             <label htmlFor="location">Location</label>
             <select
@@ -73,7 +74,6 @@ const AddStock = ({
               onChange={(e) => {
                 setLocation(e.target.value);
               }}
-              required
             >
               {locationList.map((location, key) => {
                 return (
@@ -84,6 +84,7 @@ const AddStock = ({
               })}
             </select>
           </div>
+
           <div className="input">
             <label htmlFor="quantity">Quantity</label>
             <input

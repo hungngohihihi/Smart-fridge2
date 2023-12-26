@@ -1,32 +1,18 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.6384f115.css",
-    "main.js": "/static/js/main.96a60c71.js",
-=======
-    "main.css": "/static/css/main.9e774f99.css",
-    "main.js": "/static/js/main.b4e28c6c.js",
->>>>>>> main
+    "main.css": "/static/css/main.8a258e12.css",
+    "main.js": "/static/js/main.bcd846fb.js",
     "static/media/NeutraText-Book.otf": "/static/media/NeutraText-Book.794f7defd77f3e1c0db9.otf",
     "static/media/NeutraText-BoldItalic.otf": "/static/media/NeutraText-BoldItalic.a1243eed8a8e343c6982.otf",
     "static/media/pho.jpg": "/static/media/pho.cd0b896de61ddf5f1098.jpg",
     "static/media/NeutraText-Bold.otf": "/static/media/NeutraText-Bold.f2c4fd968da4f4710241.otf",
     "static/media/pasta.jpg": "/static/media/pasta.506b49ce316cbf7e739b.jpg",
     "index.html": "/index.html",
-<<<<<<< HEAD
-    "main.6384f115.css.map": "/static/css/main.6384f115.css.map",
-    "main.96a60c71.js.map": "/static/js/main.96a60c71.js.map"
+    "main.8a258e12.css.map": "/static/css/main.8a258e12.css.map",
+    "main.bcd846fb.js.map": "/static/js/main.bcd846fb.js.map"
   },
   "entrypoints": [
-    "static/css/main.6384f115.css",
-    "static/js/main.96a60c71.js"
-=======
-    "main.9e774f99.css.map": "/static/css/main.9e774f99.css.map",
-    "main.b4e28c6c.js.map": "/static/js/main.b4e28c6c.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.9e774f99.css",
-    "static/js/main.b4e28c6c.js"
->>>>>>> main
+    "static/css/main.8a258e12.css",
+    "static/js/main.bcd846fb.js"
   ]
 }

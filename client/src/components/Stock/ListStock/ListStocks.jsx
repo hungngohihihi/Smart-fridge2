@@ -25,9 +25,9 @@ const ListStocks = ({
     return (
       <div className="stock-list">
         {stocks
-          .sort((a, b) =>
-            getDifDays(a.expiration) > getDifDays(b.expiration) ? 1 : -1
-          )
+          // .sort((a, b) =>
+          //   getDifDays(a.expiration) > getDifDays(b.expiration) ? 1 : -1
+          // )
           .map((stock) => {
             let difDay = getDifDays(stock.expiration);
             let color = {
@@ -100,9 +100,9 @@ const ListStocks = ({
         </thead>
         <tbody>
           {stocks
-            .sort((a, b) =>
-              getDifDays(a.expiration) > getDifDays(b.expiration) ? 1 : -1
-            )
+            // .sort((a, b) =>
+            //   getDifDays(a.expiration) > getDifDays(b.expiration) ? 1 : -1
+            // )
             .map((stock) => {
               let difDay = getDifDays(stock.expiration);
               let color = {
