@@ -40,7 +40,7 @@ router.get("/search/", async (req, res) => {
   switch (`${email.length == 0} ${title.length == 0}`) {
     case "false false":
       params = [
-        "SELECT * FROM post WHERE email ILIKE $1 AND title = $2",
+        "SELECT * FROM post WHERE email ILIKE $1 AND title ILIKE $2",
         ["%" + email + "%", "%" + title + "%"]
       ];
       break;
