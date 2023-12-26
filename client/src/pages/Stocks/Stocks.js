@@ -24,14 +24,13 @@ const Stocks = ({ isMobile, locationList, username }) => {
   };
 
   const getStocks = async () => {
-    
+
     await fetch("/api/stocks")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setStocks(data);
-
         const listExpiration = [];
 
         data.forEach(item => {
@@ -42,12 +41,12 @@ const Stocks = ({ isMobile, locationList, username }) => {
 
         setList(listExpiration);
       });
-      
+
   };
 
   useEffect(() => {
     getStocks();
-  }, [locationList]);
+  }, []);
 
   return (
     <div className="stocks page">

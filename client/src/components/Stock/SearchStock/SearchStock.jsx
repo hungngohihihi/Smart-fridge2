@@ -16,7 +16,7 @@ const SearchStock = ({
       `/api/stocks/search/?name=${name}&location=${location}`
     );
     const jsonResponse = await searchResult.json();
-    await setStocks(jsonResponse);
+    setStocks(jsonResponse);
     setSearchVisibility(false);
   };
 

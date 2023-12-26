@@ -97,7 +97,7 @@ const App = () => {
     getLocations();
     checkMobile();
     authenticateUser();
-  }, [locationList]);
+  }, []);
 
   window.addEventListener("resize", checkMobile);
 

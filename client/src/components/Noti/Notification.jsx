@@ -36,7 +36,7 @@ const Notification = ({ listMessage }) => {
   useEffect(() => {
     // Update the listMess whenever listMessage prop changes
     setListMess(listMessage);
-  }, [listMessage]);
+  }, []);
 
   return (
     <div>
