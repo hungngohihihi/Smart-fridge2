@@ -37,7 +37,6 @@ router.get("/", async (req, res) => {
 router.get("/search/", async (req, res) => {
   const { email, title } = req.query;
   let params;
-  console.log(email, title);
   switch (`${email.length == 0} ${title.length == 0}`) {
     case "false false":
       params = [
