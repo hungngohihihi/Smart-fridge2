@@ -35,6 +35,14 @@ CREATE TABLE location (
   name varchar(50) NOT NULL,
   email varchar(150) NOT NULL
 );
+
+CREATE TABLE post (
+  post_id SERIAL PRIMARY KEY,
+  email varchar(150) NOT NULL,
+  title varchar(100) NOT NULL,
+  content varchar(1200) NOT NULL,
+  time TIMESTAMP NOT NULL
+);
 ```
 
 ### Client & Server Setup:

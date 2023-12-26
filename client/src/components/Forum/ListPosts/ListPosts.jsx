@@ -1,69 +1,71 @@
 import React from "react";
 
-const ListPosts = ({ 
-    posts, 
+const ListPosts = ({
+    posts,
     // getPosts, 
     // setPosts, 
     isMobile }) => {
-   
-    
+
+
     const MobileList = () => {
         return (
-        <div className="post-list">
-            {posts.map((post) => {
-            
-            return (
-                <div className="post-list-item" key={post.post_id}>
-                <div className="row-1">
-                    <p className="title">{post.title}</p>
-                </div>
-                <div className="row-2">
-                    <p className="content">{post.content}</p>
-                    <p className="author">{post.author}</p>
-                </div>
-                <div className="row-3">
-                    <p className="date">{post.date}</p>
-                </div>
-                
-                </div>
-            );
-            })}
-        </div>
+            <div className="post-list-all">
+                {posts.map((post) => {
+                    return (
+                        <div className="post-list">
+                            <div className="post-list-item" key={post.post_id}>
+                                <div className="row-1">
+                                    <h1 className="title">{post.title}</h1>
+                                </div>
+                                <div className="row-2">
+                                    <p className="content">{post.content}</p>
+                                </div>
+                                <div style={{ fontSize: '10px', textAlign: 'right', marginRight: '0.3em'}} className="row-3">
+                                    <i  className="author">{post.email}</i>
+                                </div>
+                                <div  className="row-4">
+                                    <p  className="date">{post.date}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         );
     };
-    
+
     const DesktopList = () => {
         return (
-        <div className="post-list">
-            {posts.map((post) => {
-
-            
-            return (
-                <div className="post-list-item" key={post.post_id}>
-                <div className="row-1">
-                    <p className="title">{post.title}</p>
-                </div>
-                <div className="row-2">
-                    <p className="content">{post.content}</p>
-                    <p className="author">{post.email}</p>
-                </div>
-                <div className="row-3">
-                    <p className="date">{post.date}</p>
-                </div>
-                
-                </div>
-            );
-            })}
-        </div>
-        
+            <div className="post-list-all">
+                {posts.map((post) => {
+                    return (
+                        <div className="post-list">
+                            <div className="post-list-item" key={post.post_id}>
+                                <div className="row-1">
+                                    <h1 className="title">{post.title}</h1>
+                                </div>
+                                <div className="row-2">
+                                    <p className="content">{post.content}</p>
+                                </div>
+                                <div style={{ fontSize: '10px', textAlign: 'right', marginRight: '0.3em'}} className="row-3">
+                                    <i  className="author">{post.email}</i>
+                                </div>
+                                <div  className="row-4">
+                                    <p  className="date">{post.date}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         );
     };
-    
+
     return (
         <div className="list-posts">
-        {isMobile ? <MobileList /> : <DesktopList />}
+            {isMobile ? <MobileList /> : <DesktopList />}
         </div>
     );
-    }
+}
 
 export default ListPosts;
