@@ -75,6 +75,17 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
+          <div className="input">
+            <label htmlFor="image">image</label>
+            <input
+               type="file" 
+               name="imageEpisode" 
+               id="imageEpisode" 
+               required
+              // value={content}
+              // onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
         </div>
         <div className="btn-container">
           <button

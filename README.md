@@ -41,6 +41,7 @@ CREATE TABLE post (
   email varchar(150) NOT NULL,
   title varchar(100) NOT NULL,
   content varchar(1200) NOT NULL,
+  avatar text,
   time TIMESTAMP NOT NULL
 );
 ```
