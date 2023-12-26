@@ -24,6 +24,7 @@ const Stocks = ({ isMobile, locationList, username }) => {
   };
 
   const getStocks = async () => {
+    
     await fetch("/api/stocks")
       .then((response) => {
         return response.json();
@@ -41,6 +42,7 @@ const Stocks = ({ isMobile, locationList, username }) => {
 
         setList(listExpiration);
       });
+      
   };
 
   useEffect(() => {

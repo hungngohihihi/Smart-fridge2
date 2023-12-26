@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ListUsers from "../../components/Forum/ListUser";
 // import AddStock from "../../components/Stock/AddStock";
+import ListPosts from "../../components/Forum/ListPosts";
 import SearchForum from "../../components/Forum/SearchForum";
+import AddPost from "../../components/Forum/AddPost";
 import pasta from "./pasta.jpg";
 import pho from "./pho.jpg";
 import "./forum.scss";
@@ -14,6 +16,18 @@ const Forum = ({ isMobile, username }) => {
   // const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
+  const [posts, setPosts] = useState([]);
+
+  const getPosts = async () => {
+    await fetch("/api/post")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPosts(data);
+      });
+  }
+
 
   const getUsers = async () => {
     await fetch("/api/users")
@@ -28,6 +42,12 @@ const Forum = ({ isMobile, username }) => {
   useEffect(() => {
     getUsers();
   }, []);
+
+  useEffect(() => {   
+    getPosts();
+  }
+  , []);
+
 
   return (
     <div className="forums page">
@@ -62,7 +82,12 @@ const Forum = ({ isMobile, username }) => {
           setAddVisibility={setAddVisibility}
           addVisible={addVisible}
         /> */}
-
+        <AddPost
+          // locationList={locationList}
+          getPosts={getPosts}
+          setAddVisibility={setAddVisibility}
+          addVisible={addVisible}
+        />
         <SearchForum
           // name={name}
           // location={location}
@@ -92,15 +117,14 @@ const Forum = ({ isMobile, username }) => {
             isMobile={isMobile}
           />
         </div>
-        <div className="list-post">
-          {/* <ListPosts
-          locationList={locationList}
-          getPosts={getPosts}
+          <ListPosts
           posts={posts}
-          setPosts={setPosts}
+          // getPosts={getPosts}
+          
+          // setPosts={setPosts}
           isMobile={isMobile}
-        /> */}
-          <div>
+        />
+          {/* <div>
             <header>
               <h1>Khám phá thế giới của đồ ăn ngon</h1>
             </header>
@@ -126,8 +150,8 @@ const Forum = ({ isMobile, username }) => {
             <footer>
               <p>Xin chân thành cảm ơn bạn đã thưởng thức đồ ăn qua bài viết của chúng tôi.</p>
             </footer>
-          </div>
-        </div>
+          </div> */}
+        
       </div>
     </div>
   );
