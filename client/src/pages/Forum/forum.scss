@@ -106,20 +106,28 @@
     }
 
     .user-post {
-      font-size: 1em;
-      display: block;
+      font-size: 0.9em;
+      display: flex;
+      justify-content: center;
       width: 40%;
       height: 20%;
       border-radius: 0.5em;
       padding-top: 0.8em;
       padding-bottom: 0.8em;
       padding-left: 0.6em;
+      padding-right: 0.6em;
       background-color: #ffffff;
-      margin-top: 0.5em;
-      margin-left: 0.5em;
-      margin-right: 0.5em;
+      margin: 0.5em;
       color: black;
       text-align: center;
+      overflow: hidden;
+
+      .user-list {
+        flex-shrink: 1;
+        overflow: hidden;
+        // text-overflow: ellipsis;
+        max-width: 100%;
+      }
 
       @media (max-width: $medium) {
         width: 75%;
@@ -138,12 +146,13 @@
       border-radius: 0.5em;
 
       background-color: #ffffff;
-      text-align: center;
+      text-align: justify;
       // border: 1px solid #070707;
       color: black;
       padding-top: 0.4em;
       padding-bottom: 0.3em;
       padding-left: 0.8em;
+      padding-right: 0.8em;
       margin-bottom: 1em;
       margin-top: 0.6em;
       margin-left: 0.6em;
@@ -156,6 +165,10 @@
         width: 90%;
       }
       
+    }
+
+    .list-posts {
+      width: 100%;
     }
   }
 }

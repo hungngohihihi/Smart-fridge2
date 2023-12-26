@@ -5,6 +5,7 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [success, setSuccess] = useState(false);
+  const [avatar, setAvatar] = useState();
 
   const addPost = async (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
     }).then((result) => {
       if (result.isConfirmed) setSuccess(true);
     });
+
   };
 
   useEffect(() => {
@@ -81,9 +83,8 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
                type="file" 
                name="imageEpisode" 
                id="imageEpisode" 
-               required
-              // value={content}
-              // onChange={(e) => setContent(e.target.value)}
+              value={avatar}
+              onChange={(e) => setAvatar(e.target.value)}
             />
           </div>
         </div>
