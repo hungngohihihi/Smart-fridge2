@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./login.scss";
+import Swal from "sweetalert2";
 //Icons
 import EyeIcon from "../../assets/images/EyeIcon";
 
 const Login = ({ isMobile }) => {
   document.title = "FridgeMan - Login";
 
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [url, setUrl] = useState("");
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,11 +26,25 @@ const Login = ({ isMobile }) => {
       body: JSON.stringify(body),
     })
       .then((response) => {
-        if (response.redirected) {
-          window.location.href = response.url;
-        } else {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Login successful",
+          confirmButtonText: '<div class="fa fa-thumbs-up"}>OK</div>',
+        }).then((result) => {
+          if (result.isConfirmed) setSuccess(true);
+        });
+        if (!response.redirected) {
           return response.json();
         }
+        else {
+          setUrl = response.url;
+        }
+        // if (response.redirected) {
+        //   window.location.href = response.url;
+        // } else {
+        //   return response.json();
+        // }
       })
       .then((data) => {
         if (data) {
@@ -32,6 +52,15 @@ const Login = ({ isMobile }) => {
         }
       });
   };
+
+  const handleClickLogin = () => {
+    window.location.href = url;
+  }
+  useEffect(() => {
+    if (success) {
+      handleClickLogin();
+    }
+  }, [success]);
 
   return (
     <div className="login page">

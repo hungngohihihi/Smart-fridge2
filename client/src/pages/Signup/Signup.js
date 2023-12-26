@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signup.scss";
-//Icons
+import Swal from "sweetalert2";
+import { useHistory  } from "react-router-dom";
 import EyeIcon from "../../assets/images/EyeIcon";
 import CheckMark from "../../assets/images/CheckMark";
 import XMark from "../../assets/images/XMark";
 
 const Signup = ({ isMobile }) => {
   document.title = "FridgeMan - Signup";
-
+  
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [checkPassword, setCheckPassword] = useState({
     charCount: false,
     upperCase: false,
@@ -40,15 +43,34 @@ const Signup = ({ isMobile }) => {
       body: JSON.stringify(body),
     })
       .then((response) => {
-        if (response.redirected) {
-          window.location.href = response.url;
-        }
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Signup successful",
+          confirmButtonText: '<div class="fa fa-thumbs-up"}>OK</div>',
+        }).then((result) => {
+          if (result.isConfirmed) setSuccess(true);
+        });
+        // if (response.redirected) {
+        //   window.location.href = response.url;
+        // }
         return response.json();
       })
       .catch((err) => {
         //setErrorMessage(err);
       });
   };
+
+  const handleClickLogin = () => {
+    history.push("/login");
+  };
+
+  useEffect(() => {
+    if (success) {
+      handleClickLogin();
+    }
+  }, [success]);
+
 
   return (
     <div className="signup page">

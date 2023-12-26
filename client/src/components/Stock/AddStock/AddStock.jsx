@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
-const AddStock = ({
-  getStocks,
-  locationList,
-  setAddVisibility,
-  addVisible,
-}) => {
+const AddStock = ({ getStocks, locationList, setAddVisibility, addVisible }) => {
   let today = new Date();
   let todayMonth =
     today.getMonth() + 1 < 10
@@ -15,6 +11,7 @@ const AddStock = ({
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [success, setSuccess] = useState(false);
   const [expiration, setExpiration] = useState(todayDate);
 
   const addStock = async (e) => {
@@ -30,11 +27,31 @@ const AddStock = ({
     setQuantity("");
     setExpiration(todayDate);
     getStocks();
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Created item successful",
+      confirmButtonText: '<div class="fa fa-thumbs-up"}>OK</div>',
+    }).then((result) => {
+      if (result.isConfirmed) setSuccess(true);
+    });
   };
 
   useEffect(() => {
     setLocation(locationList[0] ? locationList[0].name : "");
   }, []);
+
+  useEffect(() => {
+    // Gọi hàm getPosts khi component cha được render hoặc khi có sự thay đổi trong posts
+    getStocks();
+  }, []);
+
+  useEffect(() => {
+    if (success) {
+      // Set opacity to 0 to close the pop-up
+      setAddVisibility(false); // Assuming setAddVisibility is a function to control the visibility
+    }
+  }, [success]);
 
   return (
     <div

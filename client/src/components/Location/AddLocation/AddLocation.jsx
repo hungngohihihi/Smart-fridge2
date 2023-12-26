@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 const AddLocation = ({ getLocations, setAddVisibility, addVisible }) => {
   const [name, setName] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const addLocation = async (e) => {
     e.preventDefault();
@@ -13,8 +15,27 @@ const AddLocation = ({ getLocations, setAddVisibility, addVisible }) => {
     });
     setName("");
     getLocations();
-    setAddVisibility(false);
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Created location successful",
+      confirmButtonText: '<div class="fa fa-thumbs-up"}>OK</div>',
+    }).then((result) => {
+      if (result.isConfirmed) setSuccess(true);
+    });
   };
+
+  useEffect(() => {
+    // Gọi hàm getPosts khi component cha được render hoặc khi có sự thay đổi trong posts
+    getLocations();
+  }, []);
+
+  useEffect(() => {
+    if (success) {
+      // Set opacity to 0 to close the pop-up
+      setAddVisibility(false); // Assuming setAddVisibility is a function to control the visibility
+    }
+  }, [success]);
 
   return (
     <div
