@@ -29,14 +29,19 @@ const Notification = ({ listMessage }) => {
 
   useEffect(() => {
     // Automatically trigger notifications when the component mounts
-    notify();
+    if (!notificationsShown && listMess.length > 0) {
+      notify();
+      // Set the flag to true so that notifications won't be shown again
+      setNotificationsShown(true);
+    }
   }, [listMess, notificationsShown]);
 
-  // This useEffect is optional and depends on your use case
   useEffect(() => {
     // Update the listMess whenever listMessage prop changes
-    setListMess(listMessage);
-  }, []);
+    if (listMessage !== listMess) {
+      setListMess(listMessage);
+    }
+  }, [listMessage]);
 
   return (
     <div>
