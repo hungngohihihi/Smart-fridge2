@@ -15,17 +15,42 @@ router.get("/", async (req, res) => {
     [req.session.email]
   );
   res.send(allLocations.rows);
+   
+  
+
 });
 
 //Delete a certain location with an id
 router.delete("/:id", async (req, res) => {
+
   const { id } = req.params;
+
+  
+  const result = await pool.query(
+    "SELECT name FROM location WHERE location_id = $1",
+    [id]
+  )
+  
+  const name = result.rows[0].name;
+  
+  await pool.query(
+      "DELETE FROM stock WHERE location = $1 RETURNING *",
+      [name]
+  );
+  
+
   res.send(
     await pool.query(
       "DELETE FROM location WHERE location_id = $1 RETURNING *",
       [id]
     )
   );
+
+  // res.send(
+  //   await pool.query(
+  //     "DELETE FROM stock WHERE location_id = $1 RETURNING *",
+  //   )
+  // );
 });
 
 //Get location with a certain ID
