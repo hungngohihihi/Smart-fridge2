@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ListUsers from "../../components/Forum/ListUser";
-// import AddStock from "../../components/Stock/AddStock";
 import ListPosts from "../../components/Forum/ListPosts";
-import SearchForum from "../../components/Forum/SearchForum";
+import SearchPost from "../../components/Forum/SearchPost";
 import AddPost from "../../components/Forum/AddPost";
-import pasta from "./pasta.jpg";
-import pho from "./pho.jpg";
 import "./forum.scss";
 
 const Forum = ({ isMobile, username }) => {
@@ -15,7 +12,8 @@ const Forum = ({ isMobile, username }) => {
   const [searchVisible, setSearchVisibility] = useState(false);
   // const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
@@ -27,7 +25,6 @@ const Forum = ({ isMobile, username }) => {
         setPosts(data);
       });
   }
-
 
   const getUsers = async () => {
     await fetch("/api/users")
@@ -43,10 +40,9 @@ const Forum = ({ isMobile, username }) => {
     getUsers();
   }, []);
 
-  useEffect(() => {   
+  useEffect(() => {
     getPosts();
-  }
-  , []);
+  }, []);
 
 
   return (
@@ -76,82 +72,32 @@ const Forum = ({ isMobile, username }) => {
       </div>
 
       <div className="forum-post">
-        {/* <AddStock
-          locationList={locationList}
-          getStocks={getStocks}
-          setAddVisibility={setAddVisibility}
-          addVisible={addVisible}
-        /> */}
         <AddPost
-          // locationList={locationList}
           getPosts={getPosts}
           setAddVisibility={setAddVisibility}
           addVisible={addVisible}
         />
-        <SearchForum
-          // name={name}
-          // location={location}
-          // setName={setName}
-          // setLocation={setLocation}
-          // locationList={locationList}
-          // setStocks={setStocks}
-          setSearchVisibility={setSearchVisibility}
-          searchVisible={searchVisible}
-        />
+
         <div className="user-post">
-          <SearchForum
-            // name={name}
-            // location={location}
-            // setName={setName}
-            // setLocation={setLocation}
-            // locationList={locationList}
-            // setStocks={setStocks}
+          <SearchPost
+            email={email}
+            setEmail={setEmail}
+            title={title}
+            setTitle={setTitle}
+            posts={posts}
+            setPosts={setPosts}
             setSearchVisibility={setSearchVisibility}
             searchVisible={searchVisible}
           />
           <ListUsers
-            // locationList={locationList}
-            // getUsers={getUsers}
             users={users}
-            // setUsers={setUsers}
             isMobile={isMobile}
           />
         </div>
-          <ListPosts
+        <ListPosts
           posts={posts}
-          // getPosts={getPosts}
-          
-          // setPosts={setPosts}
           isMobile={isMobile}
         />
-          {/* <div>
-            <header>
-              <h1>Khám phá thế giới của đồ ăn ngon</h1>
-            </header>
-
-            <article>
-              <h2>Phở Việt Nam</h2>
-              <img src={pho} alt="Phở Việt Nam" />
-              <p>
-                Phở là một món ăn truyền thống của Việt Nam, nổi tiếng với hương vị thơm ngon và đầy đủ chất dinh dưỡng.
-                Một tô phở bao gồm nước dùng thơm ngon, bánh phở mềm mại và các loại thịt như bò, gà hoặc nước luộc.
-              </p>
-            </article>
-
-            <article>
-              <h2>Pasta Ý</h2>
-              <img src= {pasta} alt="Pasta Ý" />
-              <p>
-                Pasta là một món ăn truyền thống của Ý, được làm từ bột mỳ và có thể kết hợp với nhiều loại sốt khác nhau.
-                Sự đa dạng của pasta là vô tận, từ mì ý, spagetti đến ravioli, tất cả đều có thể thỏa mãn khẩu vị của bạn.
-              </p>
-            </article>
-
-            <footer>
-              <p>Xin chân thành cảm ơn bạn đã thưởng thức đồ ăn qua bài viết của chúng tôi.</p>
-            </footer>
-          </div> */}
-        
       </div>
     </div>
   );
