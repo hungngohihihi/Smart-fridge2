@@ -11,31 +11,31 @@ const ListRecipes = ({ recipes, getRecipes, setRecipes, isMobile }) => {
     return (
       <div className="recipe-list">
         {recipes.map((recipe) => {
-            let color = {
-              text: "",
-              background: "",
-            };
-            return (
-              <div className="recipe-list-item" key={recipe.recipe_id}>
-                <div className="row-1">
-                  <p className="name">{recipe.name}</p>
-                  <p className="description">{recipe.description}x</p>
-                </div>
-                <div className="row-2">
-                  <p className="ingredient">{recipe.ingredient}</p>
-                </div>
-                <div className="row-3">
-                  <button
-                    onClick={() => {
-                      deleteRecipes(recipe.recipe_id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </div>
+          let color = {
+            text: "",
+            background: "",
+          };
+          return (
+            <div className="recipe-list-item" key={recipe.recipe_id}>
+              <div className="row-1">
+                <p className="name">{recipe.name}</p>
+                <p className="description">{recipe.description}x</p>
               </div>
-            );
-          })}
+              <div className="row-2">
+                <p className="ingredient">{recipe.ingredient}</p>
+              </div>
+              <div className="row-3">
+                <button
+                  onClick={() => {
+                    deleteRecipes(recipe.recipe_id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -52,21 +52,17 @@ const ListRecipes = ({ recipes, getRecipes, setRecipes, isMobile }) => {
           </tr>
         </thead>
         <tbody>
-        {recipes.map((recipe) => {
+          {recipes.map((recipe) => {
             let color = {
               text: "",
               background: "",
             };
             return (
-              <div className="recipe-list-item" key={recipe.recipe_id}>
-                <div className="row-1">
-                  <p className="name">{recipe.name}</p>
-                  <p className="description">{recipe.description}x</p>
-                </div>
-                <div className="row-2">
-                  <p className="ingredient">{recipe.ingredient}</p>
-                </div>
-                <div className="row-3">
+              <tr className="recipe-list-item" key={recipe.recipe_id}>
+                <td>{recipe.name}</td>
+                <td>{recipe.description}</td>
+                <td>{recipe.ingredient}</td>
+                <td>
                   <button
                     onClick={() => {
                       deleteRecipes(recipe.recipe_id);
@@ -74,8 +70,8 @@ const ListRecipes = ({ recipes, getRecipes, setRecipes, isMobile }) => {
                   >
                     Delete
                   </button>
-                </div>
-              </div>
+                </td>
+              </tr>
             );
           })}
         </tbody>
@@ -84,9 +80,9 @@ const ListRecipes = ({ recipes, getRecipes, setRecipes, isMobile }) => {
   };
   return (
     <div className="list-recipes">
-        {isMobile ? <MobileList /> : <DesktopList />}
+      {isMobile ? <MobileList /> : <DesktopList />}
     </div>
-);
+  );
 };
 
 export default ListRecipes;
