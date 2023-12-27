@@ -2,6 +2,40 @@
 
 .recipes.page {
   @include pageSpacing();
+  div.edit-recipe-modal,
+  div.add-recipe-modal,
+  div.search-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    font-family: $neutra;
+    transition: $ease-all-short;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .modal-background {
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
+    form {
+      text-align: left;
+      border-collapse: initial;
+      border-spacing: initial;
+      font-size: initial;
+      @include modal(false);
+    }
+  }
+
   .recipe-content {
     width: 80%;
     margin: auto;
@@ -31,6 +65,43 @@
       @media (max-width: $large) {
         font-size: 1.3em;
       }
+    }
+  }
+}
+
+.navigation-buttons {
+  margin: 15px 0 20px;
+  display: flex;
+  justify-content: left;
+  button {
+    margin: 0 1em 0 0;
+    border: none;
+    padding: 0.5em 2em;
+    font-size: 1.5em;
+    border-radius: 6em;
+    font-family: $neutra-bold;
+    color: $secondary;
+    background-color: $primary;
+    cursor: pointer;
+    transition: $bezier;
+    @media (min-width: $large) {
+      font-size: 1.5em;
+    }
+    @media (max-width: $large) {
+      font-size: 1.15em;
+    }
+    @media (max-width: $medium) {
+      padding: 0.5em 1em;
+      font-size: 1.25em;
+    }
+    @media (max-width: $small) {
+      font-size: 1.1em;
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:focus {
+      outline: 0;
     }
   }
 }

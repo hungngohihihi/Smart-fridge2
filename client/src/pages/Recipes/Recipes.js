@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ListRecipes from "../../components/Recipe/ListRecipe";
 import Notification from "../../components/Noti/Notification";
 import "./recipes.scss";
+import AddRecipe from "../../components/Recipe/AddRecipe/AddREcipe";
 
 
 const Recipes = ({ isMobile, username }) => {
@@ -21,12 +22,11 @@ const Recipes = ({ isMobile, username }) => {
       .then((data) => {
         setRecipes(data);
       });
-    
   };
 
   useEffect(() => {
     getRecipes();
-  }, []);
+  }, [recipes]);
 
   return (
     <div className="recipes page">
@@ -34,21 +34,29 @@ const Recipes = ({ isMobile, username }) => {
         <h3>{username}'s</h3>
         <h1>Recipes</h1>
         <div className="navigation-buttons">
-          {/* <button
+          {<button
             onClick={() => {
               setAddVisibility(true);
             }}
           >
-            Add Item
+            Add Recipe
           </button>
+          /* 
           <button
             onClick={() => {
               setSearchVisibility(true);
             }}
           >
-            Search Item
+            Search Recipe
           </button> */}
         </div>
+
+        <AddRecipe
+          getRecipes={getRecipes}
+          setAddVisibility={setAddVisibility}
+          addVisible={addVisible}
+        />
+
         <ListRecipes
           getRecipes={getRecipes}
           recipes={recipes}
