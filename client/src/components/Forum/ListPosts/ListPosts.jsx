@@ -18,13 +18,22 @@ const ListPosts = ({
                                     <h1 className="title">{post.title}</h1>
                                 </div>
                                 <div className="row-2">
+                                    <div className="post-image">
+                                        {post.avatar && (
+                                            <img
+                                                src={post.avatar}
+                                                alt="Post avatar"
+                                                style={{ maxWidth: "70%" }}
+                                            />
+                                        )}
+                                    </div>
                                     <p className="content">{post.content}</p>
                                 </div>
-                                <div style={{ fontSize: '10px', textAlign: 'right', marginRight: '0.3em'}} className="row-3">
-                                    <i  className="author">{post.email}</i>
+                                <div style={{ fontSize: '10px', textAlign: 'right', marginRight: '0.3em' }} className="row-3">
+                                    <i className="author">{post.email}</i>
                                 </div>
-                                <div  className="row-4">
-                                    <p  className="date">{post.date}</p>
+                                <div className="row-4">
+                                    <p className="date">{post.date}</p>
                                 </div>
                             </div>
                         </div>
@@ -45,13 +54,22 @@ const ListPosts = ({
                                     <h1 className="title">{post.title}</h1>
                                 </div>
                                 <div className="row-2">
+                                    <div className="post-image">
+                                        {post.avatar && (
+                                            <img
+                                                src={post.avatar}
+                                                alt="Post avatar"
+                                                style={{ maxWidth: "70%" }}
+                                            />
+                                        )}
+                                    </div>
                                     <p className="content">{post.content}</p>
                                 </div>
-                                <div style={{ fontSize: '10px', textAlign: 'right', marginRight: '0.3em'}} className="row-3">
-                                    <i  className="author">{post.email}</i>
+                                <div style={{ fontSize: '10px', textAlign: 'right', marginRight: '0.3em' }} className="row-3">
+                                    <i className="author">{post.email}</i>
                                 </div>
-                                <div  className="row-4">
-                                    <p  className="date">{post.date}</p>
+                                <div className="row-4">
+                                    <p className="date">{post.date}</p>
                                 </div>
                             </div>
                         </div>

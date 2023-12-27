@@ -7,9 +7,15 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
   const [success, setSuccess] = useState(false);
   const [avatar, setAvatar] = useState();
 
+  const handlePreviewAvatar = (e) => {
+    const file = e.target.files[0];
+    file.preview = URL.createObjectURL(file);
+    setAvatar(file.preview);
+  }
+
   const addPost = async (e) => {
     e.preventDefault();
-    const body = { title, content };
+    const body = { title, content, avatar };
     await fetch("/api/post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -17,7 +23,9 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
     });
     setTitle("");
     setContent("");
+    setAvatar("");
     getPosts();
+
     Swal.fire({
       icon: "success",
       title: "Success",
@@ -80,11 +88,12 @@ const AddPost = ({ getPosts, setAddVisibility, addVisible }) => {
           <div className="input">
             <label htmlFor="image">image</label>
             <input
-               type="file" 
-               name="imageEpisode" 
-               id="imageEpisode" 
-              value={avatar}
-              onChange={(e) => setAvatar(e.target.value)}
+              type="file"
+              name="imageEpisode"
+              id="imageEpisode"
+              accept="image/*"
+              // value={avatar}
+              onChange={handlePreviewAvatar}
             />
           </div>
         </div>

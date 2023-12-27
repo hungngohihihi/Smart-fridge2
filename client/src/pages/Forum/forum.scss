@@ -117,7 +117,9 @@
       padding-left: 0.6em;
       padding-right: 0.6em;
       background-color: #ffffff;
-      margin: 0.5em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: 0.5em;
       color: black;
       text-align: center;
       overflow: hidden;
@@ -168,6 +170,16 @@
         width: 90%;
       }
       
+      &:hover {
+        background-color: #f1eefe;
+        cursor: pointer;
+        scale: 101%;
+      }
+
+      .post-image {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }

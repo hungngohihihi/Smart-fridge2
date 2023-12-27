@@ -12,12 +12,12 @@ const pool = require("../db");
 
 //Add a post
 router.post("/", async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, avatar } = req.body;
   const currentTimeUTC = new Date().toUTCString();
   res.send(
     await pool.query(
-      "INSERT INTO post (email, title, content, time ) values ($1, $2, $3, $4) RETURNING *",
-      [req.session.email, title, content, currentTimeUTC]
+      "INSERT INTO post (email, title, content, avatar, time ) values ($1, $2, $3, $4, $5) RETURNING *",
+      [req.session.email, title, content, avatar, currentTimeUTC]
     ).rows
   );
 });
