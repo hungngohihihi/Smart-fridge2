@@ -24,6 +24,14 @@ CREATE TABLE stock (
   email varchar(150) NOT NULL
 );
 
+CREATE TABLE recipe (
+  recipe_id SERIAL PRIMARY KEY,
+  name varchar(50) NOT NULL,
+  description varchar(1200) NOT NULL,
+  ingredient varchar(200) NOT NULL,
+  email varchar(150) NOT NULL
+);
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email varchar(150) UNIQUE NOT NULL,

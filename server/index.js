@@ -13,6 +13,7 @@ const compression = require("compression");
 //Routes
 const stocks = require("./routes/stocks");
 const locations = require("./routes/locations");
+const recipes = require("./routes/recipes");
 const auth = require("./routes/auth");
 const index = require("./routes/index");
 const users = require("./routes/users");
@@ -43,6 +44,7 @@ app.use(
 //Add Route Listeners
 app.use("/api/stocks", stocks);
 app.use("/api/locations", locations);
+app.use("/api/recipes", recipes);
 app.use("/api/auth", auth);
 app.use("/api/users", users);
 app.use("/api/post", post);

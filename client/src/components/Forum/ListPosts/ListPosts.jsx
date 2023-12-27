@@ -6,7 +6,6 @@ const ListPosts = ({
     // setPosts, 
     isMobile }) => {
 
-
     const MobileList = () => {
         return (
             <div className="post-list-all">
